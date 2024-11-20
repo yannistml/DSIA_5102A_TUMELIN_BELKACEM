@@ -45,7 +45,6 @@ def delete_album(album_id: int, db: Session):
             detail="Album not found"
         )
     
-    # Delete the album
     db.delete(album)
     db.commit()
 
