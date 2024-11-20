@@ -1,6 +1,6 @@
 # Catalogue de Musique 
 
-Ce projet a pour but d'offrir aux utilisateurs la possibilité de naviguer dans un catalogue de musique, d'explorer différents artistes, albums et chansons, ainsi que de créer des playlists personnalisées. Notre base de données est inspirée du dataset Million Song Dataset, adapté pour les besoins de notre application.
+Ce projet a pour but d'offrir aux utilisateurs la possibilité de naviguer dans un catalogue de musique, d'explorer différents artistes, albums et chansons. 
 ## Utilisation
 
 Pour lancer notre projet, voici les démarches à suivre : 
