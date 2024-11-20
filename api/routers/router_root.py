@@ -1,9 +1,10 @@
 from fastapi import APIRouter
 from models.database import BaseSQL, engine, SessionLocal
 from create_db import insert_albums
-import pandas as pd 
+import pandas as pd
 
 router = APIRouter()
+
 
 @router.on_event("startup")
 async def initialize_db():
@@ -21,4 +22,3 @@ async def initialize_db():
         print("Albums inserted successfully.")
     except Exception as e:
         print(f"Database initialization error: {e}")
-

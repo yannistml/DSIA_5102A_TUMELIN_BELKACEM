@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from routers import router_user,router_album,router_root
-
-from models.database import BaseSQL, engine
+from routers import router_user, router_album, router_root
 
 
 app = FastAPI()
