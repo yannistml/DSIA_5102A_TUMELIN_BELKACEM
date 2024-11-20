@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <!-- login.html -->
+    <form action="/login" method="POST">
+        <label for="username">Username</label>
+        <input type="text" name="username" required><br>
+        <label for="password">Password</label>
+        <input type="password" name="password" required><br>
+        <input type="submit" value="Login">
+    </form>
+
+    {% if access_token %}
+        <p>Login successful! <a href="/catalogue">Go to Catalogue</a></p>
+    {% endif %}
+
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
