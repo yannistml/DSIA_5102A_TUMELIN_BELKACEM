@@ -1,11 +1,5 @@
-from fastapi import APIRouter, Request, Depends
-from fastapi.responses import HTMLResponse
-import os
+from fastapi import APIRouter
 from models.database import BaseSQL, engine, SessionLocal
-from services.register import register_user
-from schema.schema import User, UserCreate
-from sqlalchemy.orm import Session
-from models.database import get_db
 from create_db import insert_albums
 import pandas as pd 
 

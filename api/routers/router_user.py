@@ -25,8 +25,8 @@ async def get_register_form(request: Request):
 
 @router.post("/register")
 async def create_user(
-    username: str = Form(...),            # Extract 'username' from the form
-    password: str = Form(...),            # Extract 'password' from the form
+    username: str = Form(...),            
+    password: str = Form(...),           
     db: Session = Depends(get_db)
 ): 
     hashed = str(hashlib.sha256(password.encode()).hexdigest())
@@ -50,12 +50,3 @@ async def login_page(request : OAuth2PasswordRequestForm= Depends(),db : Session
 async def logout(response : Response,authentified: Annotated[str, Cookie()] = None):
     return logout(authentified= authentified, response= response)
     
-# @router.post("/register")
-# async def create_user( request : UserCreate = Depends(), db: Session= Depends(get_db)):
-#     user = UserCreate(username=username, password=password)
-
-#     return register_user(request = request,db = db)
-
-# @router.get("/register")
-# async def get_current_user(current_user : User = Depends(get_current_user)):
-#     return current_user
