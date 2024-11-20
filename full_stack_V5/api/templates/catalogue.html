@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Music Catalogue</title>
+</head>
+<body>
+    <h1>Welcome to Your Music Catalogue, {{ user.username }}</h1>
+
+    <h2>Your Albums</h2>
+    {% if user.username in fake_music_db %}
+        <ul>
+            {% for album in fake_music_db[user.username] %}
+                <li>
+                    <strong>{{ album.title }}</strong> by {{ album.artist }} (Released: {{ album.release_date }})
+                    <br>
+                    Genre: {{ album.genre }}
+                    <br>
+                    Description: {{ album.description }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No albums found. Start adding some!</p>
+    {% endif %}
+
+    <h3>Add a New Album</h3>
+    <form action="/catalogue/add" method="POST">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br>
+        <label for="artist">Artist:</label><br>
+        <input type="text" id="artist" name="artist" required><br>
+        <label for="release_date">Release Date:</label><br>
+        <input type="text" id="release_date" name="release_date" required><br>
+        <label for="genre">Genre:</label><br>
+        <input type="text" id="genre" name="genre" required><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <input type="submit" value="Add Album">
+    </form>
+
+</body>
+</html>
