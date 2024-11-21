@@ -8,14 +8,12 @@
 <body>
     <h1>Album Catalogue</h1>
 
-    <!-- Formulaire de recherche par ID d'album -->
     <form id="searchForm" method="GET">
         <label for="album_id">Filter by Album ID: </label>
         <input type="number" id="album_id" name="album_id" placeholder="Enter album ID">
         <button type="submit">Search</button>
     </form>      
 
-    <!-- Exemple de tableau d'album -->
     {% if albums %}
     <table border="1">
         <thead>
@@ -59,17 +57,16 @@
 
     <script>
         document.getElementById("searchForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Empêcher l'envoi du formulaire
-            const albumId = document.getElementById("album_id").value; // Récupérer la valeur du champ album_id
+            event.preventDefault();
+            const albumId = document.getElementById("album_id").value; 
             if (albumId) {
-                // Créer l'URL de recherche avec l'album_id
                 const url = `/catalogue/search/id?q=${albumId}`;
-                // Rediriger vers l'URL
                 window.location.href = url;
             }
         });
     </script>
     
-
+    <a href="/">Back to Home</a>
+    
 </body>
 </html>
