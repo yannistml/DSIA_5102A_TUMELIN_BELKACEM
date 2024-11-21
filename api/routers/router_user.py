@@ -27,12 +27,24 @@ async def get_register_form(request: Request):
 
 @router.post("/register")
 async def create_user(
-    username: str = Form(...), password: str = Form(...), db: Session = Depends(get_db)
+
+    username: str = Form(...),
+    password: str = Form(...),
+    db: Session = Depends(get_db),
+    request: Request = None,
+
 ):
     hashed = str(hashlib.sha256(password.encode()).hexdigest())
     user = UserCreate(username=username, password=hashed)
 
-    register_user(request=user, db=db)
+
+    error_message = register_user(request=user, db=db)
+    if error_message:
+        templates = request.app.state.templates
+        return templates.TemplateResponse(
+            "register.html", {"request": request, "error_message": error_message}
+        )
+
     return RedirectResponse(url="/login", status_code=303)
 
 

@@ -10,14 +10,16 @@ def register_user(request: UserCreate, db: Session):
         db.query(post.UserDB).filter(post.UserDB.username == request.username).first()
     )
     if record:
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="This username is already taken",
-        )
 
-    new_user = post.UserDB(username=request.username, hashed_password=request.password)
+        return "This username is already taken"
+
+    new_user = post.UserDB(
+        username=request.username, hashed_password=request.password
+    )  
+
+  
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
 
-    return new_user
+    return None
