@@ -1,6 +1,6 @@
-
-from sqlalchemy import Column, Integer, String,  Float, ForeignKey 
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from .database import BaseSQL
+
 
 class AlbumDB(BaseSQL):
     __tablename__ = "albums"

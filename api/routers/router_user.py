@@ -5,7 +5,6 @@ from models.database import get_db
 from schema.schema import UserCreate
 from services.register import register_user
 from fastapi.responses import HTMLResponse, RedirectResponse
-
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import Annotated
 from sqlalchemy.orm import Session
@@ -28,13 +27,16 @@ async def get_register_form(request: Request):
 
 @router.post("/register")
 async def create_user(
+
     username: str = Form(...),
     password: str = Form(...),
     db: Session = Depends(get_db),
     request: Request = None,
+
 ):
     hashed = str(hashlib.sha256(password.encode()).hexdigest())
     user = UserCreate(username=username, password=hashed)
+
 
     error_message = register_user(request=user, db=db)
     if error_message:
